@@ -1,6 +1,11 @@
 import express from "express";
 import connectDB from "./Config/db.js"; 
 import router from "./routes/insightRoutes.js";
+import dotenv from "dotenv"; // Import dotenv
+import cors from 'cors'
+
+
+dotenv.config();
 
 const app = express();
 
@@ -10,6 +15,14 @@ const app = express();
 app.use(express.json());
 
 connectDB();
+
+// app.use(
+//   cors({
+//     origin: ["exp://192.168.55.254:8081"],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
 
 app.use("/insights", router);
 

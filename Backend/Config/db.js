@@ -3,8 +3,11 @@
 import mongoose from "mongoose";
 
 const connectDB = async () => {
+
+  const dbURI = process.env.DB_URI;
+
   try {
-    const conn = await mongoose.connect("mongodb://127.0.0.1:27017/intern_db", {
+    const conn = await mongoose.connect(dbURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
